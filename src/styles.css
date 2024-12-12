@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+
+  /* Dark theme */
+  body.dark {
+    background: #313E51 url("../src/assets/images/pattern-background-desktop-dark.svg") no-repeat center/cover;
+    color: #ffffff;
+  }
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: #F4F6FA url("../src/assets/images/pattern-background-desktop-light.svg") no-repeat center/cover;
+    color: #313E51 ;
+}
+app-root{
+    width: 70%;
+    height: 100%;
+}
+app-home app-subject .subject-container .subject{
+    background: red;
+}
+
+@media screen and (max-width: 840px) {
+    app-root{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 428px) {
+    app-root{
+        width: 90%;
+    }
+}

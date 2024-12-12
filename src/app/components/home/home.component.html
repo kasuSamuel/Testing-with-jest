@@ -1,0 +1,11 @@
+<div class="home" [class]="theme">
+    <div class="hero-section">
+        <h1>Welcome to the <span>Frontend Quiz!</span></h1>
+        <p>Pick a subject to get started.</p>
+    </div>
+    <div class="subject-section">
+        @for(subject of data; track subject){
+            <app-subject [subject]="subject.title" [image]="subject.icon" (click)="onChangeIcon(subject.icon)" (click) = "onMonitorSubject(subject.title)" [theme]="theme"/>
+        }
+    </div>
+</div>

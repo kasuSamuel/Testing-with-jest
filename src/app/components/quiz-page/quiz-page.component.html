@@ -1,0 +1,64 @@
+@if(currentQuestionIndex < questions.length - 1){
+    <div class="quiz-container" >
+        <div class="question-container" [class] = "theme">
+            <p>Question {{currentQuestionIndex+1}} of 10</p>
+            <h3 >{{questions[currentQuestionIndex].question}}</h3>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" [style.width]="(currentQuestionIndex+1) * 10 + '%'"></div>
+            </div>
+        </div>
+        <div class="options-container" [class] = "theme">
+            @for(option of questions[currentQuestionIndex].options; track $index){
+    
+                <div [ngClass]="borderClass($index)" [class]="theme" class="option base" (click)="OnSelectOption($index)">
+                    <div [ngClass]="optionMarkerColor($index)" class="option-marker" [class]="theme">
+                        <p>
+                            {{'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[$index]}}
+                        </p>
+                    </div>
+                    <p class="option-text">{{option}}</p>
+                    @if(isSubmitted && option === questions[currentQuestionIndex].answer && !isNotSelected && selectedOption !== null){
+                        <i class="correctIcon fa-regular fa-circle-check"></i>
+                    }@else if (isSubmitted && option !== questions[currentQuestionIndex].answer && selectedOption === $index){
+                        <i class=" wrongIcon fa-regular fa-circle-xmark"></i>
+                    }@else if (isSubmitted && selectedOption === $index && !isCorrectAnswer) {
+                        <i class="wrongIcon fa-regular fa-circle-xmark"></i>
+                    }
+                </div>
+            }
+            <div class="submit-btn">
+                @if(!isSubmitted){<button (click)="submitQuestion()">Submit Answer </button>
+            }@else {
+                <button (click)="nextQuestion()">Next Question</button>
+            }
+        </div>
+        <p  *ngIf="showErrorMessage" class="error-msg"><i class="fa-regular fa-circle-xmark"></i> Please submit an answer</p>
+        </div>
+    </div>
+}@else {
+    <div class="score-container" [class] = "theme">
+        <div class="completed-message-section">
+            <p>Quiz Completed</p>
+            <h3>You scored...</h3>
+        </div>
+        <div class="score-section">
+            <div class="score-board">
+                <div class="quiz-title">
+                    <div class="title-icon" [ngClass]="onChangeIconBg()">
+                     <img [src]="iconsUrl" alt="">
+                    </div>
+                     <h2>{{title}}</h2>
+                 </div>
+                 <div class="score-number">
+                     <h1>{{score}}</h1>
+                     <p>out of 10</p>
+                 </div>
+            </div>
+            <div class="submit-btn">
+                <button (click)="playAgain()">Play Again</button>
+            </div>
+        </div>
+    </div>
+}
+
+

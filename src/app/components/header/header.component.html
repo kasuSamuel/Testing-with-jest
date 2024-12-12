@@ -1,0 +1,16 @@
+<div class="header">
+    <div class="title">
+        @if(iconsUrl){
+            <div class="logo" [ngClass]="onChangeIconBg()">
+                <img [src]="iconsUrl" alt="" class="">
+            </div>
+        }
+        <h1>{{title}}</h1>
+    </div>
+    <div class="toggle-container">
+        <span><img src="../../../assets/images/icon-sun-dark.svg" alt=""></span>
+        <input type="checkbox" [checked] = "isChecked" id="dark-toggle" (click)="onChangeTheme()">
+        <label for="dark-toggle"></label>
+        <span><img src="../../../assets/images/icon-moon.svg" alt=""></span>
+    </div>
+</div>

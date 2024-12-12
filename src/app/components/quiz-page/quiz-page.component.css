@@ -1,0 +1,362 @@
+/* dark theme */
+.question-container.dark h3 {
+    color: white;
+}
+
+.options-container.dark .option {
+    background: #3B4D66;
+}
+
+.options-container.dark .option .option-text {
+    color: white;
+}
+
+.option-marker.dark p {
+    color: #626C7F;
+}
+
+.question-container.dark .option:hover .option-marker:not(.selected-option-marker):not(.correct-option-marker):not(.wrong-option-marker) {
+    background-color: #626C7F;
+}
+
+.score-container.dark .score-board {
+    background: #3B4D66;
+}
+
+/* end dark theme */
+.quiz-container,
+.score-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+/* Question Container */
+.question-container {
+    flex: 1;
+    padding: 1rem 2rem;
+    position: relative;
+}
+
+.question-container p {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.question-container h3 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #313E51;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+/* Progress Container */
+.progress-bar {
+    width: 80%;
+    height: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    position: absolute;
+    bottom: 8rem;
+    padding: .3rem;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #A729F5;
+    transition: width 0.3s ease;
+    border-radius: 8px;
+}
+
+/* Option Styles */
+.option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+
+.option p {
+    flex: 1;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: #313E51;
+}
+
+.option-marker {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    background: #F4F6FA;
+    margin-right: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.option-marker p {
+    color: #626C7F;
+}
+
+.option:hover .option-marker:not(.selected-option-marker):not(.correct-option-marker):not(.wrong-option-marker) {
+    background-color: #f3e8ff;
+}
+
+.correctIcon {
+    font-size: 1.25rem;
+    color: #16a34a;
+    margin-left: 0.5rem;
+    position: absolute;
+    right: 0.5rem;
+}
+
+.wrongIcon {
+    font-size: 1.25rem;
+    color: #dc2626;
+    margin-left: 0.5rem;
+    position: absolute;
+    right: 0.5rem;
+}
+
+/* Button Styles */
+.submit-btn {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-btn button {
+    width: 100%;
+    height: 5.75rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: #A729F5;
+    border: none;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn button:hover {
+    background: #d18afe;
+}
+
+.error-msg {
+    color: #f56565;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+
+.selected-not-submitted {
+    border: 3px solid #A729F5;
+    border-width: 3px;
+    cursor: pointer;
+}
+
+.submitted-correct {
+    border: 3px solid #16a34a;
+    cursor: not-allowed;
+}
+
+.submitted-incorrect {
+    border: 3px solid #ef4444;
+    cursor: not-allowed;
+}
+
+.submitted {
+    cursor: not-allowed;
+}
+
+.selected-option-marker {
+    background: #A729F5;
+    color: #fff;
+    pointer-events: none;
+}
+
+.correct-option-marker {
+    background: #16a34a;
+    color: #fff;
+    pointer-events: none;
+}
+
+.wrong-option-marker {
+    background: #ef4444;
+    color: #fff;
+    pointer-events: none;
+}
+
+.selected-option-marker p,
+.correct-option-marker p,
+.wrong-option-marker p {
+    color: inherit !important;
+}
+
+/* Score board */
+.completed-message-section {
+    font-size: 4rem;
+}
+
+.completed-message-section p {
+    font-weight: 300;
+}
+
+.score-board {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 4rem;
+}
+
+.quiz-title {
+    display: flex;
+    align-items: center;
+}
+
+.title-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: #fff;
+    border-radius: .8rem;
+}
+
+.quiz-title h2 {
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.html {
+    background: #FFF1E9;
+}
+
+.css {
+    background: #E9F9FF;
+}
+
+.js {
+    background: #EBF0FF;
+}
+
+.accessibility {
+    background: #F6E7FF;
+}
+
+.score-number {
+    text-align: center;
+}
+
+.score-number h1 {
+    font-size: 9rem;
+    font-weight: 600;
+}
+
+.score-number p {
+    font-size: 1.5rem;
+    color: #626C7F;
+}
+
+/* Responsive Design */
+
+@media (max-width: 884px) {
+
+    .quiz-container,
+    .score-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 3fr;
+        /* height: 100vh; */
+        margin-top: 1rem;
+    }
+
+    .question-container {
+        padding: 0rem;
+    }
+
+    .progress-bar {
+        width: 100%;
+    }
+
+    .option {
+        margin-bottom: .5rem;
+    }
+
+    .progress-bar {
+        position: static;
+    }
+}
+
+@media (max-width: 428px) {
+    .quiz-container h3 {
+        font-size: 1.25rem;
+    }
+
+    .option p {
+        font-size: 1.12rem;
+    }
+
+    .option-marker {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .correctIcon,
+    .wrongIcon {
+        font-size: 0.875rem;
+    }
+
+    .submit-btn button {
+        font-size: 1rem;
+        height: 4rem;
+    }
+
+    .completed-message-section {
+        font-size: 2.5rem;
+    }
+
+    .quiz-title {
+        align-items: center;
+    }
+
+    .title-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .title-icon img {
+        width: 70%;
+        height: auto;
+    }
+
+    .quiz-title h2 {
+        font-size: 1.125rem;
+    }
+
+    .score-number h1 {
+        font-size: 5.5rem;
+    }
+
+    .score-number p {
+        font-size: 1rem;
+    }
+}

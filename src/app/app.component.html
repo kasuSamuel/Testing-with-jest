@@ -1,0 +1,8 @@
+<div>
+    <app-header (changeTheme)="toggleTheme()" [currentTheme]="currentTheme" [title]="title" [iconsUrl]="iconsUrl"></app-header>
+    @if(!title){
+        <app-home [class] = "currentTheme" [theme]="currentTheme" (changeIcon)="getIcons($event)" (monitorTitle)="getQuestions($event)"></app-home>
+    }@else{
+        <app-quiz-page [title]="title" [iconsUrl]="iconsUrl" (resetQuiz)="resetQuiz()" [theme]="currentTheme"/>
+    }
+</div>

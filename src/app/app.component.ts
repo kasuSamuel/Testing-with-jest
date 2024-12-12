@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component} from '@angular/core';
 import { HeaderComponent } from "./components/header/header.component";
 import { HomeComponent } from './components/home/home.component';
 import { QuizPageComponent } from "./components/quiz-page/quiz-page.component";
@@ -9,7 +9,6 @@ import { QuizPageComponent } from "./components/quiz-page/quiz-page.component";
   imports: [ HeaderComponent, HomeComponent, QuizPageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   title = '';

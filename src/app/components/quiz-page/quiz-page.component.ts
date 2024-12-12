@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output,ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Quizdata,Questions } from '../../shared/data.interface';
 import { DataServiceService } from '../../shared/data-service.service';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './quiz-page.component.html',
   styleUrl: './quiz-page.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuizPageComponent {
   @Input() title = '';

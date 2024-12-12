@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input,ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-subject',
@@ -7,7 +7,6 @@ import { Component, Input,ChangeDetectionStrategy } from '@angular/core';
   imports: [CommonModule],
   templateUrl: './subject.component.html',
   styleUrl: './subject.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SubjectComponent {
   @Input() subject = '';

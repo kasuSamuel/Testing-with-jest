@@ -1,4 +1,4 @@
-import { Component, Input,ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SubjectComponent } from "./subject/subject.component";
 import { DataServiceService } from '../../shared/data-service.service';
 import { Quizdata} from '../../shared/data.interface';
@@ -9,7 +9,6 @@ import { Output, EventEmitter } from '@angular/core';
   imports: [SubjectComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class HomeComponent {

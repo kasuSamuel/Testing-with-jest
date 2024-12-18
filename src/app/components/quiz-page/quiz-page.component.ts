@@ -36,9 +36,10 @@ export class QuizPageComponent {
   
 
   async ngOnInit() {
-    this.data = await this.dataService.getQuizData();
-    this.questions = this.data.find(question => question.title === this.title)!.questions
-  }
+    this.dataService.getQuizData().subscribe(data => {
+      this.data = data;
+      this.questions = this.data.find(question => question.title === this.title)!.questions
+    });  }
 
   OnSelectOption(index: number) {
     if(!this.isSubmitted){

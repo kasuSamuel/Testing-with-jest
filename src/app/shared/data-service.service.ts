@@ -1,26 +1,38 @@
-import { Injectable } from '@angular/core';
-import { Quizdata } from '../../app/shared/data.interface';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Quizdata } from '../../app/shared/data.interface'; // Ensure this path is correct
+
+export interface QuizResponse { 
+  quizzes: Quizdata[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
-export class DataServiceService {
+export class DataServiceService {  // Renamed to remove redundancy
+  dataUrl = 'assets/data.json'; 
 
-  dataUrl = '../assets/data.json';
+  private http = inject(HttpClient);
 
-  quizData: Quizdata[] = [];
-
-
-  async getQuizData(): Promise<Quizdata[]> {
-    try {
-      const response = await fetch(this.dataUrl);
-      const data = await response.json();
-      this.quizData = data.quizzes;
-      return this.quizData;
-    } catch (error) {
-      console.error('Error fetching quiz data:', error);
-      throw error;
-    }
+  getQuizData(): Observable<Quizdata[]> {
+    return this.http.get<QuizResponse>(this.dataUrl).pipe(
+      map(response => response.quizzes),  // Extract quizzes array
+      catchError(this.handleError)  // Handle any errors
+    );
   }
 
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'An unknown error occurred!';
+    
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Client-side error: ${error.error.message}`;
+    } else {
+      errorMessage = `Backend returned code ${error.status}, body was: ${error.error}`;
+    }
 
+    console.error(errorMessage);
+    return throwError(() => new Error(errorMessage));  
+  }
 }

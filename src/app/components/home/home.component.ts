@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { SubjectComponent } from "./subject/subject.component";
 import { DataServiceService } from '../../shared/data-service.service';
 import { Quizdata} from '../../shared/data.interface';
@@ -18,10 +18,12 @@ export class HomeComponent {
   @Output() changeIcon = new EventEmitter<string>();
   @Input() theme = '';
 
-  constructor( private dataService: DataServiceService){}
+  dataService = inject(DataServiceService);
 
-  async ngOnInit() {
-    this.data = await this.dataService.getQuizData();
+  ngOnInit() {
+    this.dataService.getQuizData().subscribe(data => {
+      this.data = data;
+    });
   }
 
   onMonitorSubject(subject: string) {

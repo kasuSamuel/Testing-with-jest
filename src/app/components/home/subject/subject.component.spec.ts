@@ -20,4 +20,20 @@ describe('SubjectComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('should return correct icon class based on title', () => {
+    const testCases = [
+      { title: 'HTML', expected: 'html' },
+      { title: 'CSS', expected: 'css' },
+      { title: 'JavaScript', expected: 'js' },
+      { title: 'Accessibility', expected: 'accessibility' },
+      { title: 'Unknown', expected: 'logo' },
+    ];
+  
+    testCases.forEach((testCase) => {
+      component.subject = testCase.title;
+      expect(component.onMonitorSubject()).toBe(testCase.expected);
+    });
+  });
 });

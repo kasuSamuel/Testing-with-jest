@@ -59,7 +59,7 @@ export class AppComponent {
   }
 
   getIcons(icon: string): void {
-    this.iconsUrl = icon;
+    this.iconsUrl = icon;  
   }
 
   resetQuiz(): void {
@@ -68,6 +68,5 @@ export class AppComponent {
     this.score = 0;
     this.isQuizCompleted = false;
   }
-
 
 }

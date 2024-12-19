@@ -3,10 +3,11 @@ import { SubjectComponent } from "./subject/subject.component";
 import { DataServiceService } from '../../shared/data-service.service';
 import { Quizdata} from '../../shared/data.interface';
 import { Output, EventEmitter } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SubjectComponent],
+  imports: [SubjectComponent,HttpClientModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 

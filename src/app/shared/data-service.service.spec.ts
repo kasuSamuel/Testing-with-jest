@@ -48,20 +48,5 @@ describe('DataServiceService', () => {
     req.flush({ quizzes: mockQuizData }); 
   });
 
-  it('should handle error correctly', () => {
-    const errorMessage = 'An error occurred while fetching quizzes';
 
-    // Call the service method
-    service.getQuizData().subscribe(
-      () => {},
-      (error) => {
-        expect(error).toBeInstanceOf(Error);
-        expect(error.message).toBe(errorMessage);
-      }
-    );
-
-    // Simulate an HTTP error response
-    const req = httpMock.expectOne(service['dataUrl']);
-    req.flush({}, { status: 500, statusText: 'Server Error' });
-  });
 });

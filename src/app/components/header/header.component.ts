@@ -21,7 +21,7 @@ export class HeaderComponent {
     const darkTheme = localStorage.getItem('theme');
     if(darkTheme === 'dark'){
       this.isChecked = true;
-    }
+    } 
   }
 
   onChangeIconBg(){

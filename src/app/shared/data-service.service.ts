@@ -1,38 +1,30 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Quizdata } from '../../app/shared/data.interface'; // Ensure this path is correct
+import { Quizdata } from '../../app/shared/data.interface'; 
 
-export interface QuizResponse { 
+interface QuizResponse { // Interface for the structure of the JSON
   quizzes: Quizdata[];
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataServiceService {  // Renamed to remove redundancy
-  dataUrl = 'assets/data.json'; 
+export class DataServiceService {
 
-  private http = inject(HttpClient);
+ private dataUrl = 'assets/data.json'; 
+
+  constructor(private http: HttpClient) { }
 
   getQuizData(): Observable<Quizdata[]> {
     return this.http.get<QuizResponse>(this.dataUrl).pipe(
-      map(response => response.quizzes),  // Extract quizzes array
-      catchError(this.handleError)  // Handle any errors
-    );
+      map(response => response.quizzes), 
+      catchError(error => {
+        console.error('Error fetching quiz data', error);
+        return throwError(() => new Error('Error fetching quiz data'));
+      })    );
   }
 
-  private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'An unknown error occurred!';
-    
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = `Client-side error: ${error.error.message}`;
-    } else {
-      errorMessage = `Backend returned code ${error.status}, body was: ${error.error}`;
-    }
 
-    console.error(errorMessage);
-    return throwError(() => new Error(errorMessage));  
-  }
 }

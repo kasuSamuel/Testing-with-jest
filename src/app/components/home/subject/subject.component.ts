@@ -11,13 +11,13 @@ import { Component, Input} from '@angular/core';
 export class SubjectComponent {
   @Input() subject = '';
   @Input() image = '';
-  @Input() theme = '';
-
+  @Input() theme = ''; 
+ 
 
   onMonitorSubject(){
     switch(this.subject){
       case 'HTML':
-        return 'html';
+        return 'html'; 
       case 'CSS':
         return 'css';
       case 'JavaScript':

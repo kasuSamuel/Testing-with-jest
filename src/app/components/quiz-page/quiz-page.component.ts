@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Quizdata,Questions } from '../../shared/data.interface';
 import { DataServiceService } from '../../shared/data-service.service';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-quiz-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,HttpClientModule],
   templateUrl: './quiz-page.component.html',
   styleUrl: './quiz-page.component.css',
 })
@@ -36,9 +37,10 @@ export class QuizPageComponent {
   
 
   async ngOnInit() {
-    this.data = await this.dataService.getQuizData();
-    this.questions = this.data.find(question => question.title === this.title)!.questions
-  }
+    this.dataService.getQuizData().subscribe(data => {
+      this.data = data;
+      this.questions = this.data.find(question => question.title === this.title)!.questions
+    });  }
 
   OnSelectOption(index: number) {
     if(!this.isSubmitted){
@@ -102,7 +104,7 @@ export class QuizPageComponent {
   onChangeIconBg(){
     switch(this.title){
       case 'HTML':
-        return 'html';
+        return 'html'; 
       case 'CSS':
         return 'css';
       case 'JavaScript':

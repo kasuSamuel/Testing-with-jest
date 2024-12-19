@@ -1,12 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { SubjectComponent } from "./subject/subject.component";
 import { DataServiceService } from '../../shared/data-service.service';
 import { Quizdata} from '../../shared/data.interface';
 import { Output, EventEmitter } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SubjectComponent],
+  imports: [SubjectComponent,HttpClientModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 
@@ -18,10 +19,12 @@ export class HomeComponent {
   @Output() changeIcon = new EventEmitter<string>();
   @Input() theme = '';
 
-  constructor( private dataService: DataServiceService){}
+  dataService = inject(DataServiceService);
 
-  async ngOnInit() {
-    this.data = await this.dataService.getQuizData();
+  ngOnInit() {
+    this.dataService.getQuizData().subscribe(data => {
+      this.data = data;
+    });
   }
 
   onMonitorSubject(subject: string) {

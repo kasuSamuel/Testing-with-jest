@@ -1,25 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Quizdata } from '../../app/shared/data.interface';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Quizdata } from '../../app/shared/data.interface'; 
+
+interface QuizResponse { // Interface for the structure of the JSON
+  quizzes: Quizdata[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataServiceService {
 
-  dataUrl = '../assets/data.json';
+ private dataUrl = '../../assets/data.json'; 
 
-  quizData: Quizdata[] = [];
+  constructor(private http: HttpClient) { }
 
-
-  async getQuizData(): Promise<Quizdata[]> {
-    try {
-      const response = await fetch(this.dataUrl);
-      const data = await response.json();
-      this.quizData = data.quizzes;
-      return this.quizData;
-    } catch (error) {
-      console.error('Error fetching quiz data:', error);
-      throw error;
-    }
+  getQuizData(): Observable<Quizdata[]> {
+    return this.http.get<QuizResponse>(this.dataUrl).pipe(
+      map(response => response.quizzes), 
+      catchError(error => {
+        console.error('Error fetching quiz data', error);
+        return throwError(() => new Error('Error fetching quiz data'));
+      })    );
   }
 
 

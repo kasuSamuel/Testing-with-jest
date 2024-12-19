@@ -13,7 +13,7 @@ interface QuizResponse { // Interface for the structure of the JSON
 })
 export class DataServiceService {
 
- private dataUrl = 'assets/data.json'; 
+ private dataUrl = '../../assets/data.json'; 
 
   constructor(private http: HttpClient) { }
 
